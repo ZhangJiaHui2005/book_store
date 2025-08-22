@@ -14,7 +14,6 @@ export default function Edit({ author }) {
         e.preventDefault();
         post(`/admin/authors/${author.id}/update`, {
             onSuccess: () => {
-                toast.success("Author updated successfully!");
                 setData({
                     name: "",
                     birth_year: "",

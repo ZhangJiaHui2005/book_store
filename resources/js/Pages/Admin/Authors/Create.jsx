@@ -18,8 +18,6 @@ export default function Create() {
                     name: "",
                     birth_year: "",
                 });
-
-                toast.success("Author created successfully!");
             },
         });
     };

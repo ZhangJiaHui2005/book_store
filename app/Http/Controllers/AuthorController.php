@@ -26,6 +26,8 @@ class AuthorController extends Controller
             'bio' => 'nullable|string',
             'birth_year' => 'nullable|integer',
         ]));
+
+        return redirect()->route('admin.authors.index')->with('success', 'Author created successfully.');
     }
 
     public function edit(Author $author) {
@@ -40,6 +42,8 @@ class AuthorController extends Controller
             'bio' => 'nullable|string',
             'birth_year' => 'integer',
         ]));
+
+        return redirect()->route('admin.authors.index')->with('success', 'Author updated successfully.');
     }
 
     public function delete(Author $author) {
