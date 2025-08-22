@@ -22,6 +22,10 @@ export default function NavigationBar() {
                         <Nav.Link href="/admin/authors">
                             Authors
                         </Nav.Link>
+
+                        <Nav.Link href="/admin/categories">
+                            Categories
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </div>

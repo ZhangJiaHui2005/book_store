@@ -10,6 +10,7 @@ import {
 import { Link, usePage } from "@inertiajs/react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HeaderTitle from "../../../Components/Admin/HeaderTitle";
 
 export default function Authors({ authors }) {
     const [show, setShow] = React.useState(false);
@@ -27,8 +28,8 @@ export default function Authors({ authors }) {
     return (
         <AdminLayout>
             <ToastContainer />
-            <div className="container mt-5 d-flex justify-content-between align-items-center">
-                <h1>List of authors</h1>
+            <div className="container my-5 d-flex justify-content-between align-items-center">
+                <HeaderTitle title={"List of Authors"} />
 
                 <Button variant="dark">
                     <Link
