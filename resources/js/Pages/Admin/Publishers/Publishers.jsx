@@ -68,7 +68,7 @@ export default function Publishers({ publishers }) {
                                     </td>
                                     <td>
                                         {publisher.website ? (
-                                            <span>{publisher.website}</span>
+                                            <a href={publisher.website}>{publisher.website}</a>
                                         ) : (
                                             <span>No website</span>
                                         )}
