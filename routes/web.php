@@ -41,4 +41,13 @@ Route::prefix('admin')->group(function () {
         Route::post('/{publisher}/update', [\App\Http\Controllers\PublisherController::class, 'update']);
         Route::delete('/{publisher}/delete', [\App\Http\Controllers\PublisherController::class, 'delete']);
     });
+
+    Route::prefix('books')->group(function () {
+        Route::get('/', [\App\Http\Controllers\BookController::class, 'index'])->name('admin.books.index');
+        Route::get('/create', [\App\Http\Controllers\BookController::class, 'create']);
+        Route::post('/store', [\App\Http\Controllers\BookController::class, 'store']);
+        Route::get('/{book}/edit', [\App\Http\Controllers\BookController::class, 'edit']);
+        Route::post('/{book}/update', [\App\Http\Controllers\BookController::class, 'update']);
+        Route::delete('/{book}/delete', [\App\Http\Controllers\BookController::class, 'delete']);
+    });
 });
