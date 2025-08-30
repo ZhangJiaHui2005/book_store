@@ -1,20 +1,14 @@
 import React from "react";
 import AdminLayout from "../../../Layouts/AdminLayout";
-import { Alert, Button, Modal, Table } from "react-bootstrap";
-import {
-    ExclamationCircleFill,
-    PenFill,
-    PlusCircle,
-    Trash2Fill,
-} from "react-bootstrap-icons";
-import { Link, usePage } from "@inertiajs/react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import HeaderTitle from "../../../Components/Admin/HeaderTitle";
+import { Button, Modal } from "react-bootstrap";
+import { ExclamationCircleFill, PenFill, PlusCircle, Trash2Fill } from "react-bootstrap-icons";
+import { Link, usePage } from "@inertiajs/react";
+import { toast } from "react-toastify";
 
-export default function Authors({ authors }) {
-    const [show, setShow] = React.useState(false);
+export default function Publishers({ publishers }) {
     const { flash } = usePage().props;
+    const [show, setShow] = React.useState(false);
 
     React.useEffect(() => {
         if (flash.success) {
@@ -27,52 +21,66 @@ export default function Authors({ authors }) {
 
     return (
         <AdminLayout>
-            <ToastContainer />
-            <div className="container my-5 d-flex justify-content-between align-items-center">
-                <HeaderTitle title={"List of Authors"} />
+            <div className=" container my-5 d-flex justify-content-between align-items-center">
+                <HeaderTitle title={"List of publishers"} />
 
                 <Button variant="dark">
                     <Link
-                        href="/admin/authors/create"
-                        className="d-flex align-items-center text-decoration-none"
+                        className="text-decoration-none"
+                        href="/admin/publishers/create"
                     >
                         <span className="text-white d-flex align-items-center gap-2">
-                            Add New Author <PlusCircle />
+                            Add New Publisher <PlusCircle />
                         </span>
                     </Link>
                 </Button>
             </div>
 
             <div className="container mt-4">
-                {authors.length === 0 ? (
-                    <Alert variant="danger" className="mt-4">
+                {publishers.length === 0 ? (
+                    <div className="alert alert-danger mt-4">
                         <h4 className="text-center">
-                            No authors found in the database.
+                            No publishers found in the database.
                         </h4>
-                    </Alert>
+                    </div>
                 ) : (
-                    <Table hover striped bordered responsive>
+                    <table className="table table-hover table-striped table-bordered table-responsive">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Birth Year</th>
+                                <th>Address</th>
+                                <th>Website</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {authors.map((author) => (
-                                <tr key={author.id}>
-                                    <td>{author.id}</td>
-                                    <td>{author.name}</td>
-                                    <td>{author.birth_year}</td>
+                            {publishers.map((publisher) => (
+                                <tr key={publisher.id}>
+                                    <td>{publisher.id}</td>
+                                    <td>{publisher.name}</td>
+                                    <td>
+                                        {publisher.address ? (
+                                            <span>{publisher.address}</span>
+                                        ) : (
+                                            <span>No address</span>
+                                        )}
+                                    </td>
+                                    <td>
+                                        {publisher.website ? (
+                                            <span>{publisher.website}</span>
+                                        ) : (
+                                            <span>No website</span>
+                                        )}
+                                    </td>
                                     <td>
                                         <Link
-                                            href={`/admin/authors/${author.id}/edit`}
+                                            href={`/admin/publishers/${publisher.id}/edit`}
                                             className="btn btn-primary me-2"
                                         >
                                             <PenFill />
                                         </Link>
+
                                         <Button
                                             variant="danger"
                                             onClick={handleShowModal}
@@ -93,7 +101,7 @@ export default function Authors({ authors }) {
 
                                             <Modal.Body>
                                                 Are you sure you want to delete
-                                                this author? This action cannot
+                                                this publisher? This action cannot
                                                 be undone.
                                             </Modal.Body>
 
@@ -107,11 +115,11 @@ export default function Authors({ authors }) {
                                                 <Button
                                                     onClick={handleCloseModal}
                                                     as={Link}
-                                                    href={`/admin/authors/${author.id}/delete`}
+                                                    href={`/admin/publishers/${publisher.id}/delete`}
                                                     method="delete"
                                                     variant="danger"
                                                 >
-                                                    Delete Author
+                                                    Delete Publisher
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
@@ -119,7 +127,7 @@ export default function Authors({ authors }) {
                                 </tr>
                             ))}
                         </tbody>
-                    </Table>
+                    </table>
                 )}
             </div>
         </AdminLayout>

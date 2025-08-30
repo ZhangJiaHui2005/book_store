@@ -26,6 +26,10 @@ export default function NavigationBar() {
                         <Nav.Link href="/admin/categories">
                             Categories
                         </Nav.Link>
+
+                        <Nav.Link href="/admin/publishers">
+                            Publishers
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </div>

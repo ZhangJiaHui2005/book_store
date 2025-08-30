@@ -32,4 +32,13 @@ Route::prefix('admin')->group(function () {
         Route::post('/{category}/update', [CategoryController::class, 'update']);
         Route::delete('/{category}/delete', [CategoryController::class, 'delete']);
     });
+
+    Route::prefix('publishers')->group(function () {
+        Route::get('/', [\App\Http\Controllers\PublisherController::class, 'index'])->name('admin.publishers.index');
+        Route::get('/create', [\App\Http\Controllers\PublisherController::class, 'create']);
+        Route::post('/store', [\App\Http\Controllers\PublisherController::class, 'store']);
+        Route::get('/{publisher}/edit', [\App\Http\Controllers\PublisherController::class, 'edit']);
+        Route::post('/{publisher}/update', [\App\Http\Controllers\PublisherController::class, 'update']);
+        Route::delete('/{publisher}/delete', [\App\Http\Controllers\PublisherController::class, 'delete']);
+    });
 });
